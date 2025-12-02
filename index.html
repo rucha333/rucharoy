@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rucha Roy | Mechanical Design Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+  /* Global Styles */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Roboto', sans-serif; color: #333; background: #f9f9f9; }
+
+  /* Header */
+  header { position: fixed; width: 100%; background: #ffffff; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; padding: 15px 10%; z-index: 1000; }
+  header h1 { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.8rem; color: #004080; }
+  nav a { margin-left: 20px; text-decoration: none; color: #004080; font-weight: 500; transition: 0.3s; }
+  nav a.active, nav a:hover { color: #28a745; }
+
+  /* Hero */
+  .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080') center/cover no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; }
+  .hero h2 { font-size: 3rem; font-family: 'Montserrat', sans-serif; margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); opacity: 0; transform: translateY(-20px); transition: all 1s ease-out; }
+  .hero p { font-size: 1.2rem; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); max-width: 700px; margin-bottom: 30px; opacity: 0; transform: translateY(-20px); transition: all 1s ease-out 0.3s; }
+  .hero button { padding: 12px 30px; font-size: 1rem; background: #28a745; border: none; border-radius: 5px; cursor: pointer; color: white; font-weight: 500; transition: all 0.3s; opacity: 0; transform: translateY(-20px); }
+  .hero button:hover { background: #218838; transform: scale(1.05); }
+
+  /* Sections */
+  section { padding: 100px 10%; }
+  section h2 { font-size: 2rem; color: #004080; margin-bottom: 40px; text-align: center; opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
+
+  /* About */
+  #about { background: #f0f0f0; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; }
+  #about img { width: 250px; border-radius: 10px; margin: 20px; }
+  #about div { max-width: 600px; margin: 20px; }
+  #about p { font-size: 1.1rem; opacity: 0; transform: translateY(20px); transition: all 1s ease-out 0.3s; }
+  .resume-btn { display: inline-block; margin-top: 20px; padding: 12px 25px; background: #28a745; color: white; border-radius: 5px; font-weight: 500; text-decoration: none; opacity: 0; transform: translateY(20px); transition: all 1s ease-out 0.6s; }
+  .resume-btn:hover { background: #218838; }
+
+  /* Experience / Timeline */
+  #experience { background: #ffffff; position: relative; }
+  .timeline { position: relative; margin: 0 auto; padding: 40px 0; max-width: 900px; }
+  .timeline::before { content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 4px; height: 100%; background: #28a745; }
+  .timeline-item { position: relative; width: 50%; padding: 20px 40px; box-sizing: border-box; opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
+  .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+  .timeline-item:nth-child(even) { left: 50%; text-align: left; }
+  .timeline-item h3 { font-size: 1.1rem; color: #004080; margin-bottom: 5px; }
+  .timeline-item p { font-size: 0.95rem; color: #555; }
+
+  /* Projects */
+  #projects .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 25px; }
+  .project-card { position: relative; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; opacity: 0; transform: translateY(20px); }
+  .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+  .project-card img { width: 100%; height: 180px; object-fit: cover; }
+  .project-card div { padding: 15px; }
+  .project-card h3 { color: #004080; margin-bottom: 10px; }
+  .project-card p { font-size: 0.95rem; color: #555; }
+
+  /* Contact */
+  #contact { text-align: center; }
+  #contact a { color: #28a745; font-weight: 500; }
+
+  /* Footer */
+  footer { text-align: center; background: #004080; color: white; padding: 20px; }
+
+  /* Responsive */
+  @media(max-width:768px){
+    #about { flex-direction: column; }
+    .timeline::before { left: 8px; }
+    .timeline-item { width: 100%; padding-left: 30px; padding-right: 15px; text-align: left !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <h1>Rucha Roy</h1>
+  <nav>
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <h2>I am Rucha Roy – Mechanical Design Engineer</h2>
+  <p>Designing efficient and sustainable building systems with precision and innovation.</p>
+  <button onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+</section>
+
+<!-- About -->
+<section id="about">
+  <img src="https://via.placeholder.com/250.png?text=Your+Photo" alt="Rucha Roy">
+  <div>
+    <h2>About Me</h2>
+    <p>Dedicated mechanical engineer specializing in HVAC, plumbing, and fire protection systems. Experienced in REVIT and AutoCAD MEP. Committed to delivering high-quality, on-time solutions for complex building projects.</p>
+    <a class="resume-btn" href="https://example.com/resume.pdf" target="_blank">Download Resume</a>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Municipal Building Resiliency Center</h3>
+      <p>Mechanical systems design in REVIT, Coordination and Construction Administration.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Hopewell Valley Senior Community Center</h3>
+      <p>Plumbing and fire protection systems design in REVIT, Coordination and Construction Administration.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>New Lab Fit Out</h3>
+      <p>Mechanical and Plumbing systems design in AUTOCAD for a laboratory.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>CCM Health Professionals Center</h3>
+      <p>Plumbing, fire protection, and medical air systems design in REVIT.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+1" alt="Project 1">
+      <div><h3>Little Ferry Middle School</h3><p>Plumbing and fire protection systems design in REVIT.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+2" alt="Project 2">
+      <div><h3>Metropolitan YMCA</h3><p>Mechanical systems design in REVIT BIM 360, conflict resolution with other trades.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+3" alt="Project 3">
+      <div><h3>Valley Chabad</h3><p>Mechanical systems design for a star-shaped building with religious constraints.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+4" alt="Project 4">
+      <div><h3>RWJ Barnabas University Hospital</h3><p>Mechanical design and rooftop equipment coordination for a 15-story hospital addition.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+5" alt="Project 5">
+      <div><h3>Cloud Kitchens</h3><p>Commercial kitchen facility design and coordination in 3D.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+6" alt="Project 6">
+      <div><h3>Tierra Encantada</h3><p>Multiple daycare projects across USA.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+7" alt="Project 7">
+      <div><h3>Kiddie Academy</h3><p>Mechanical and plumbing design for daycare centers.</p></div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Project+8" alt="Project 8">
+      <div><h3>Goddard School</h3><p>Prototype school design across multiple locations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:rucha@example.com">rucha@example.com</a></p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 Rucha Roy | All rights reserved</p>
+</footer>
+
+<script>
+  // Scroll animations
+  const elements = document.querySelectorAll('section h2, section p, .hero h2, .hero p, .hero button, .resume-btn, .timeline-item, .project-card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  elements.forEach(el => observer.observe(el));
+
+  // Active nav highlighting
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 90;
+      if(pageYOffset >= sectionTop) current = section.getAttribute('id');
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if(link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
