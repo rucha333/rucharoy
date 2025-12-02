@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rucha Roy | Mechanical Design Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --nav-bg: #2f3544;
+    --hero-bg: #6f7686;
+    --accent: #19e36f;
+    --text-light: #ffffff;
+    --text-muted: #cfd4dd;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Roboto',sans-serif; background:#f4f5f7; color:#333; }
+
+  /* Header */
+  header{
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    background:var(--nav-bg);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 10%;
+    z-index:1000;
+  }
+  header h1{
+    position:relative;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    color:var(--accent);
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    border:2px solid rgba(25,227,111,0.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  /* green half-circle ring */
+  header h1::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:50%;
+    border:2px solid var(--accent);
+    border-left-color:transparent;
+    border-bottom-color:transparent;
+  }
+  nav a{
+    margin-left:25px;
+    text-decoration:none;
+    font-weight:500;
+    font-size:0.85rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:#aeb3c1;
+    transition:color 0.3s;
+  }
+  nav a.active,
+  nav a:hover{
+    color:var(--accent);
+  }
+
+  /* Hero */
+  #home.hero{
+    height:100vh;
+    background:var(--hero-bg);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 10%;
+    padding-top:80px; /* for fixed header */
+    color:var(--text-light);
+  }
+  .hero-left{
+    max-width:50%;
+    text-align:center;
+    margin:0 auto;
+  }
+  .hero-title{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    font-size:3.5rem;
+    line-height:1.1;
+    margin-bottom:2.5rem;
+    letter-spacing:0.25em;
+  }
+  .hero-title .line{
+    display:block;
+    text-align:center;
+    margin:0.35em 0;
+  }
+  .green-apostrophe{
+    color:var(--accent);
+  }
+  .dot{
+    color:var(--accent);
+  }
+
+  .hero-subtitle{
+    font-size:0.95rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+  }
+  .hero-cta{ margin-top:2.5rem; }
+  .hero-cta a{
+    display:inline-block;
+    padding:12px 32px;
+    border-radius:4px;
+    background:var(--accent);
+    color:#1b2130;
+    text-decoration:none;
+    font-weight:500;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-size:0.8rem;
+    transition:transform 0.25s, box-shadow 0.25s, background 0.25s;
+  }
+  .hero-cta a:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.28);
+    background:#12c45a;
+  }
+  .hero-right{
+    max-width:40%;
+    display:flex;
+    justify-content:flex-end;
+  }
+  .hero-right img{
+    width:100%;
+    max-width:420px;
+    filter:grayscale(10%);
+  }
+
+  /* Generic section base */
+  section{ padding:100px 10%; }
+  section h2{
+    font-family:'Montserrat',sans-serif;
+    font-size:1.8rem;
+    color:#f4f5f7;
+    text-align:left;
+    margin-bottom:35px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+  }
+
+  /* ABOUT = navy box card */
+  #about{
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    padding: 120px 10% 80px;
+  }
+  .about-box-container{
+    width: 100%;
+    max-width: 900px;
+    background: #1f2a44; /* deep navy box */
+    padding: 80px 70px;
+    border-radius: 4px;
+    text-align: center;
+    color: var(--text-light);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  }
+  .about-logo{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .about-logo-circle{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:1.4rem;
+    color: var(--accent);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border:2px solid rgba(25,227,111,0.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .about-logo-circle::before{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:50%;
+    border:2.5px solid var(--accent);
+    border-left-color:transparent;
+    border-bottom-color:transparent;
+  }
+  .about-text{
+    font-size:0.95rem;
+    line-height:1.9;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 0 auto 40px;
+    letter-spacing:0.05em;
+  }
+  .about-btn{
+    display:inline-block;
+    padding:14px 40px;
+    border:2px solid var(--accent);
+    color:var(--accent);
+    text-decoration:none;
+    font-size:0.85rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    border-radius:4px;
+    transition:0.25s ease;
+  }
+  .about-btn:hover{
+    background:var(--accent);
+    color:#1f2a44;
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.28);
+  }
+
+  /* EXPERIENCE – mountain background + vertical timeline */
+  #experience{
+    position:relative;
+    padding:120px 10%;
+    color:var(--text-light);
+    background:
+      linear-gradient(rgba(72,80,96,0.92), rgba(72,80,96,0.96)),
+      url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=80")
+      center/cover fixed no-repeat;
+  }
+  #experience h2{
+    text-align:center;
+    font-size:2.2rem;
+    letter-spacing:0.4em;
+    margin-bottom:60px;
+  }
+  #experience h2 .section-number{
+    font-size:2.4rem;
+    margin-right:10px;
+    opacity:0.85;
+  }
+  .timeline{
+    position:relative;
+    max-width:900px;
+    margin:0 auto;
+    padding:20px 0 40px;
+  }
+  .timeline-line{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:3px;
+    background:var(--accent);
+  }
+  .timeline-item{
+    position:relative;
+    width:50%;
+    padding:30px 40px;
+    color:var(--text-muted);
+  }
+  .timeline-item.left{
+    text-align:right;
+    padding-right:60px;
+  }
+  .timeline-item.right{
+    margin-left:50%;
+    padding-left:60px;
+  }
+  .timeline-dot{
+    position:absolute;
+    top:40px;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 4px rgba(25,227,111,0.25);
+  }
+  .timeline-item .exp-year{
+    display:block;
+    font-size:0.85rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:6px;
+  }
+  .timeline-item h3{
+    font-family:'Montserrat',sans-serif;
+    font-size:1.1rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--text-light);
+    margin-bottom:4px;
+  }
+  .timeline-item h4{
+    font-size:0.9rem;
+    font-weight:500;
+    color:var(--text-light);
+    margin-bottom:6px;
+  }
+  .timeline-item p{
+    font-size:0.9rem;
+    line-height:1.7;
+  }
+
+  /* Projects */
+  #projects{
+    background:#2b3140;
+  }
+  #projects h2{
+    color:#f4f5f7;
+    text-align:center;
+    margin-bottom:50px;
+  }
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+  }
+  .project-card{
+    background:#383f52;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(0,0,0,0.35);
+    transition:transform 0.25s, box-shadow 0.25s;
+  }
+  .project-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 14px 30px rgba(0,0,0,0.5);
+  }
+  .project-card img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    opacity:0.9;
+  }
+  .project-card div{ padding:18px; }
+  .project-card h3{
+    color:var(--text-light);
+    margin-bottom:8px;
+    font-size:1rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+  }
+  .project-card p{
+    font-size:0.9rem;
+    color:var(--text-muted);
+  }
+
+  /* Contact */
+  #contact{
+    background:#343a4a;
+    text-align:center;
+  }
+  #contact h2{
+    text-align:center;
+    color:#f4f5f7;
+  }
+  #contact p{
+    color:var(--text-muted);
+    margin-top:10px;
+  }
+  #contact a{
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:500;
+  }
+
+  /* Footer */
+  footer{
+    text-align:center;
+    background:var(--nav-bg);
+    color:#8d94a3;
+    padding:20px;
+    font-size:0.85rem;
+  }
+
+  /* Responsive */
+  @media(max-width:900px){
+    #home.hero{
+      flex-direction:column;
+      text-align:center;
+      padding-top:100px;
+    }
+    .hero-left,.hero-right{ max-width:100%; }
+    .hero-right{
+      margin-top:25px;
+      justify-content:center;
+    }
+    .hero-title{
+      font-size:2.4rem;
+      letter-spacing:0.3em;
+    }
+
+    .timeline-line{
+      left:20px;
+      transform:none;
+    }
+    .timeline-item{
+      width:100%;
+      padding:30px 30px 30px 60px;
+      text-align:left;
+      margin-left:0;
+    }
+    .timeline-item.left{ padding-right:30px; }
+    .timeline-item.right{ padding-left:60px; }
+    .timeline-dot{
+      left:20px;
+      transform:translate(-50%, -50%);
+    }
+  }
+
+  @media(max-width:768px){
+    section{
+      padding:80px 8%;
+    }
+    #about{
+      padding:100px 8% 60px;
+    }
+    .about-box-container{
+      padding:60px 30px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>R</h1>
+  <nav>
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#experience" class="nav-link">Experience</a>
+    <a href="#projects" class="nav-link">Portfolio</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-left">
+    <h2 class="hero-title">
+      <span class="line">I<span class="green-apostrophe">'</span>M</span>
+      <span class="line">RUCHA</span>
+      <span class="line">ROY<span class="dot">.</span></span>
+    </h2>
+    <div class="hero-subtitle">
+      MECHANICAL DESIGN ENGINEER
+    </div>
+    <div class="hero-cta">
+      <a href="#projects">View Projects</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Replace with your own portrait -->
+    <img src="https://via.placeholder.com/420x520.png?text=Your+Photo" alt="Rucha Roy">
+  </div>
+</section>
+
+<!-- ABOUT (navy card style) -->
+<section id="about">
+  <div class="about-box-container">
+    <div class="about-logo">
+      <div class="about-logo-circle">R</div>
+    </div>
+    <p class="about-text">
+      Dedicated mechanical engineer specializing in HVAC, plumbing, and fire protection design.
+      Experienced in REVIT, AutoCAD MEP, and BIM coordination. Detail-oriented problem solver
+      focused on optimizing building systems for efficiency, code compliance, and performance.
+    </p>
+    <!-- changed href to resume.html -->
+    <a href="resume.html" target="_blank" class="about-btn">
+      DOWNLOAD RESUME
+    </a>
+  </div>
+</section>
+
+<!-- EXPERIENCE with mountain background + vertical timeline -->
+<section id="experience">
+  <h2><span class="section-number">03</span> EXPERIENCE</h2>
+
+  <div class="timeline">
+    <div class="timeline-line"></div>
+
+    <!-- 1: 2024–Present -->
+    <div class="timeline-item left">
+      <div class="timeline-dot"></div>
+      <span class="exp-year">2024 – PRESENT</span>
+      <h3>T&amp;M ASSOCIATES</h3>
+      <h4>Staff Designer 2</h4>
+      <p>
+        Working on mechanical system design and coordination for multidisciplinary projects,
+        contributing to HVAC and building systems solutions across various sectors.
+      </p>
+    </div>
+
+    <!-- 2: 2022–2024 -->
+    <div class="timeline-item right">
+      <div class="timeline-dot"></div>
+      <span class="exp-year">2022 – 2024</span>
+      <h3>JARMEL KIZEL ARCHITECTS &amp; ENGINEERS</h3>
+      <h4>Mechanical Design Engineer</h4>
+      <p>
+        Designed mechanical systems in REVIT and AutoCAD, reviewed submittals, coordinated
+        with all disciplines, and performed code compliance checks for complex building projects.
+      </p>
+    </div>
+
+    <!-- 3: 2020–2022 -->
+    <div class="timeline-item left">
+      <div class="timeline-dot"></div>
+      <span class="exp-year">2020 – 2022</span>
+      <h3>SHENOY ENGINEERING, PC</h3>
+      <h4>Mechanical Engineer</h4>
+      <p>
+        Prepared Mechanical, Plumbing, and Fire Protection plans using NYC codes, conducted
+        site visits and surveys, and reviewed shop drawings for a variety of New York projects.
+      </p>
+    </div>
+
+    <!-- 4: 2019 -->
+    <div class="timeline-item right">
+      <div class="timeline-dot"></div>
+      <span class="exp-year">2019</span>
+      <h3>DOGSPOT</h3>
+      <h4>Associate Mechanical Engineer</h4>
+      <p>
+        Designed and tested HVAC systems, managed BOM and process documentation, and
+        supported production, assembly flow design, and supply chain activities.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>PORTFOLIO</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Municipal+Building" alt="Municipal Building">
+      <div>
+        <h3>Municipal Building</h3>
+        <p>Mechanical design &amp; coordination in REVIT.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Senior+Center" alt="Senior Community Center">
+      <div>
+        <h3>Senior Community Center</h3>
+        <p>Plumbing &amp; fire protection systems design.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=Lab+Fit+Out" alt="New Lab Fit Out">
+      <div>
+        <h3>New Lab Fit Out</h3>
+        <p>Mechanical &amp; plumbing design in AutoCAD.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://via.placeholder.com/300x180.png?text=CCM+Health+Center" alt="CCM Health Center">
+      <div>
+        <h3>CCM Health Center</h3>
+        <p>Plumbing, fire protection, and medical air design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>CONTACT</h2>
+  <p>Email: <a href="mailto:rucha@example.com">rucha@example.com</a></p>
+</section>
+
+<footer>
+  <p>© 2025 Rucha Roy | All rights reserved</p>
+</footer>
+
+<script>
+  // Active nav highlighting
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
